@@ -1,0 +1,19 @@
+version: '3.7'
+
+services: 
+  redis:
+    restart: always
+    image: redis:latest
+    ports:
+      - 6379:6379
+    environment:
+      - TZ=${TZ:-Asia/Bangkok}
+  redisinsight:
+    image: redislabs/redisinsight:latest
+    ports:
+      - 8001:8001
+
+networks: 
+  default: 
+    external: 
+      name: local
